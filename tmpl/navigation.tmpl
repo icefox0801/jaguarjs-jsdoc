@@ -11,9 +11,14 @@ var self = this;
     <?js
     this.nav.forEach(function (item) {
     ?>
+        <?js if(item.type === 'title') { ?>
+        <li class="item item-title"><span><?js= item.name ?></span></li>
+        <?js } else if(item.type === 'index') {?>
+        <li class="item item-title"><span><a href="index.html">index</a></span></li>
+        <?js } else {?>
         <li class="item" data-name="<?js= item.longname ?>">
             <span class="title">
-                <?js= self.linkto(item.longname, item.longname) ?>
+                <?js= self.linkto(item.longname, item.type === 'module' || item.type === 'namespace' ? item.name : item.longname) ?>
                 <?js if (item.type === 'namespace') { ?>
                 <span class="static">static</span>
                 <?js } ?>
@@ -76,6 +81,7 @@ var self = this;
             ?>
             </ul>
         </li>
+        <?js } ?>
     <?js }); ?>
     </ul>
 </div>

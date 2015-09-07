@@ -26,7 +26,10 @@ $(function () {
 
     // Toggle when click an item element
     $('.navigation').on('click', '.title', function (e) {
-        $(this).parent().find('.itemMembers').toggle();
+
+        if(e.target.tagName.toUpperCase() === 'A') return true;
+
+        $(this).parent().find('.itemMembers').slideToggle(200);
     });
 
     // Show an item related a current documentation automatically
@@ -35,8 +38,6 @@ $(function () {
 
     if ($currentItem.length) {
         $currentItem
-            .remove()
-            .prependTo('.navigation .list')
             .show()
             .find('.itemMembers')
                 .show();

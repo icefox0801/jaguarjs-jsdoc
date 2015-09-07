@@ -1,0 +1,19 @@
+{
+  "name": "jaguarjs-jsdoc",
+  "description": "Jaguar.js template for JSDoc 3",
+  "version": "0.0.1",
+  "homepage": "https://github.com/davidshimjs/jaguarjs-jsdoc",
+  "author": "davidshimjs",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery": "~2.1.4",
+    "prettyPrint": "*"
+  }
+}

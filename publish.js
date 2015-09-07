@@ -83,8 +83,8 @@ function addAttribs(f) {
     var attribs = helper.getAttribs(f);
 
     if (attribs.length) {
-        f.attribs = '<span class="type-signature ' + (attribs[0] === 'static' ? 'static' : '') + '">' + htmlsafe(attribs.length ? attribs.join(',') : '') + '</span>';
-    }    
+        f.attribs = '<span class="type-signature ' + (attribs[0]) + '">' + htmlsafe(attribs.length ? attribs.join(',') : '') + '</span>';
+    }
 }
 
 function shortenPaths(files, commonPrefix) {
@@ -202,7 +202,45 @@ function attachModuleSymbols(doclets, modules) {
 function buildNav(members) {
     var nav = [];
 
+    nav.push({
+        type: 'index',
+    });
+
+    if (members.modules.length) {
+        nav.push({
+            type: 'title',
+            name: 'modules'
+        });
+        _.each(members.modules, function (v) {
+            nav.push({
+                type: 'module',
+                longname: v.longname,
+                name: v.name,
+                members: find({
+                    kind: 'member',
+                    memberof: v.longname
+                }),
+                methods: find({
+                    kind: 'function',
+                    memberof: v.longname
+                }),
+                typedefs: find({
+                    kind: 'typedef',
+                    memberof: v.longname
+                }),
+                events: find({
+                    kind: 'event',
+                    memberof: v.longname
+                })
+            });
+        });
+    }
+
     if (members.namespaces.length) {
+        nav.push({
+            type: 'title',
+            name: 'namespace'
+        });
         _.each(members.namespaces, function (v) {
             nav.push({
                 type: 'namespace',
@@ -228,7 +266,41 @@ function buildNav(members) {
         });
     }
 
+    if (members.globals.length) {
+        nav.push({
+            type: 'title',
+            name: 'global'
+        });
+        _.each(members.globals, function (v) {
+            nav.push({
+                type: 'global',
+                longname: v.longname,
+                name: v.name,
+                members: find({
+                    kind: 'member',
+                    memberof: v.longname
+                }),
+                methods: find({
+                    kind: 'function',
+                    memberof: v.longname
+                }),
+                typedefs: find({
+                    kind: 'typedef',
+                    memberof: v.longname
+                }),
+                events: find({
+                    kind: 'event',
+                    memberof: v.longname
+                })
+            });
+        });
+    }
+
     if (members.classes.length) {
+        nav.push({
+            type: 'title',
+            name: 'class'
+        });
         _.each(members.classes, function (v) {
             nav.push({
                 type: 'class',

@@ -88,6 +88,13 @@ module.exports = function (grunt) {
             }
         },
 
+        uglify: {
+            jslib: {
+                src: ['bower_components/prettyPrint/prettyprint.js'],
+                dest: 'static/scripts/prettyprint.js'
+            }
+        },
+
         copy: {
             css: {
                 src: 'static/styles/jaguar.css',
@@ -97,6 +104,11 @@ module.exports = function (grunt) {
             js: {
                 src: 'static/scripts/main.js',
                 dest: DEMO_PATH + '/scripts/main.js'
+            },
+
+            jslib: {
+                src: ['bower_components/jQuery/dist/jquery.min.js'],
+                dest: 'static/scripts/*'
             }
         }
     });
@@ -108,6 +120,7 @@ module.exports = function (grunt) {
         'grunt-contrib-copy',
         'grunt-contrib-clean',
         'grunt-contrib-less',
+        'grunt-contrib-uglify',
         'grunt-jsdoc',
     ].forEach(function (taskName) {
         grunt.loadNpmTasks(taskName);
