@@ -39,6 +39,10 @@ li {
 .navigation .applicationName a {
   color: #fff;
 }
+.navigation .applicationName img {
+  float: left;
+  margin-right: 3px;
+}
 .navigation .search {
   padding: 10px 15px;
 }

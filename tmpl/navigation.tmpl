@@ -2,8 +2,12 @@
 var self = this;
 ?>
 <div class="navigation">
-    <h3 class="applicationName"><a href="index.html"><?js= env.conf.templates.applicationName ?></a></h3>
-
+    <h3 class="applicationName">
+        <?js if(env.conf.templates.applicationLogo) { ?>
+        <img width="81" height="20" src="<?js= env.conf.templates.applicationLogo ?>" alt="<?js= env.conf.templates.applicationName ?>">
+        <?js } ?>
+        <a href="index.html"><?js= env.conf.templates.applicationName ?></a>
+    </h3>
     <div class="search">
         <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
     </div>
@@ -13,8 +17,6 @@ var self = this;
     ?>
         <?js if(item.type === 'title') { ?>
         <li class="item item-title"><span><?js= item.name ?></span></li>
-        <?js } else if(item.type === 'index') {?>
-        <li class="item item-title"><span><a href="index.html">index</a></span></li>
         <?js } else {?>
         <li class="item" data-name="<?js= item.longname ?>">
             <span class="title">
@@ -23,63 +25,70 @@ var self = this;
                 <span class="static">static</span>
                 <?js } ?>
             </span>
-            <ul class="members itemMembers">
             <?js
             if (item.members.length) {
             ?>
+            <ul class="members itemMembers">
             <span class="subtitle">Members</span>
-            <?js
-                item.members.forEach(function (v) {
-            ?>
+                <?js
+                    item.members.forEach(function (v) {
+                ?>
                 <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?></li>
-            <?js
+                <?js
                 });
+                ?>
+            </ul>
+            <?js
             }
             ?>
-            </ul>
-            <ul class="typedefs itemMembers">
             <?js
             if (item.typedefs.length) {
             ?>
-            <span class="subtitle">Typedefs</span>
-            <?js
+            <ul class="typedefs itemMembers">
+                <span class="subtitle">Typedefs</span>
+                <?js
                 item.typedefs.forEach(function (v) {
-            ?>
+                ?>
                 <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?></li>
-            <?js
+                <?js
                 });
+                ?>
+            </ul>
+            <?js
             }
             ?>
-            </ul>
-            <ul class="methods itemMembers">
             <?js
             if (item.methods.length) {
             ?>
-            <span class="subtitle">Methods</span>
-            <?js
-
+            <ul class="methods itemMembers">
+                <span class="subtitle">Methods</span>
+                <?js
                 item.methods.forEach(function (v) {
-            ?>
+                ?>
                 <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?></li>
-            <?js
+                <?js
                 });
+                ?>
+            </ul>
+            <?js
             }
             ?>
-            </ul>
-            <ul class="events itemMembers">
             <?js
             if (item.events.length) {
             ?>
+            <ul class="events itemMembers">
             <span class="subtitle">Events</span>
-            <?js
+                <?js
                 item.events.forEach(function (v) {
-            ?>
+                ?>
                 <li data-name="<?js= v.longname ?>"><?js= self.linkto(v.longname, v.name) ?></li>
-            <?js
+                <?js
                 });
+                ?>
+            </ul>
+            <?js
             }
             ?>
-            </ul>
         </li>
         <?js } ?>
     <?js }); ?>

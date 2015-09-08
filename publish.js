@@ -202,14 +202,10 @@ function attachModuleSymbols(doclets, modules) {
 function buildNav(members) {
     var nav = [];
 
-    nav.push({
-        type: 'index',
-    });
-
     if (members.modules.length) {
         nav.push({
             type: 'title',
-            name: 'modules'
+            name: 'Modules'
         });
         _.each(members.modules, function (v) {
             nav.push({
@@ -239,7 +235,7 @@ function buildNav(members) {
     if (members.namespaces.length) {
         nav.push({
             type: 'title',
-            name: 'namespace'
+            name: 'Namespaces'
         });
         _.each(members.namespaces, function (v) {
             nav.push({
@@ -269,7 +265,7 @@ function buildNav(members) {
     if (members.globals.length) {
         nav.push({
             type: 'title',
-            name: 'global'
+            name: 'Global'
         });
         _.each(members.globals, function (v) {
             nav.push({
@@ -299,7 +295,7 @@ function buildNav(members) {
     if (members.classes.length) {
         nav.push({
             type: 'title',
-            name: 'class'
+            name: 'Classes'
         });
         _.each(members.classes, function (v) {
             nav.push({
