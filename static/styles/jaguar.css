@@ -14,6 +14,9 @@ li {
 #wrap {
   position: relative;
 }
+.invisible {
+  opacity: 0;
+}
 ::-webkit-scrollbar {
   width: 8px;
   background-color: transparent;
@@ -112,8 +115,10 @@ li {
 .main {
   padding: 20px 20px;
   margin-left: 250px;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-out;
 }
-.main .page-title {
+.main transition .page-title {
   display: none;
 }
 .main h1 {
@@ -205,6 +210,7 @@ li {
 .main .description {
   margin-top: 10px;
   font-size: 13px;
+  line-height: 26px;
 }
 .main .description ul,
 .main .description ol {
@@ -352,7 +358,7 @@ li {
 }
 .main article ol,
 .main article ul {
-  margin-left: 45px;
+  margin-left: 25px;
 }
 .main article ol > li {
   list-style-type: decimal;
@@ -361,6 +367,34 @@ li {
 .main article ul > li {
   margin-bottom: 5px;
   list-style-type: disc;
+}
+.main .prettyprint {
+  position: relative;
+  padding-top: 30px;
+}
+.main .prettyprint .linenums {
+  margin-left: 45px;
+}
+.main .prettyprint:after {
+  content: 'Javascript';
+  top: 0;
+  left: 0;
+  position: absolute;
+  font-size: 14px;
+  background-color: #ccd;
+  color: #fff;
+  padding: 0 15px;
+  line-height: 20px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-radius: 3px 0 0 0;
+  box-shadow: inset 0 0 1px #ccc;
+}
+.main pre.pre-html:after {
+  content: 'HTML';
+}
+.main pre.pre-javascript:after {
+  content: 'Javascript';
 }
 footer {
   margin: 15px 0;

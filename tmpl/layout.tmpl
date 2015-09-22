@@ -50,7 +50,7 @@
 <body>
 <div id="wrap" class="clearfix">
     <?js= this.partial('navigation.tmpl', this) ?>
-    <div class="main">
+    <div class="main invisible">
         <h1 class="page-title" data-filename="<?js= filename ?>"><?js= title ?></h1>
         <?js= content ?>
 
@@ -67,7 +67,23 @@
         </footer>
     </div>
 </div>
-<script>prettyPrint();</script>
+<script>
+$(function () {
+    $('code[class^="lang"]').each(function (idx, elem) {
+        var $el = $(elem);
+
+        var classList = /\blang\-\w+\b/.exec($el.attr('class'));
+
+        if(classList.length > 0) {
+            $el.parent('pre').addClass(classList[0].replace('lang', 'pre'));
+        }
+
+        $el.parent('pre').addClass('prettyprint');
+    });
+    prettyPrint();
+    $('.main').removeClass('invisible');
+})
+</script>
 <script src="scripts/linenumber.js"></script>
 <script src="scripts/main.js"></script>
 </body>

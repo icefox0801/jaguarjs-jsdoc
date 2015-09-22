@@ -338,6 +338,9 @@ exports.publish = function(taffyData, opts, tutorials) {
     conf['default'] = conf['default'] || {};
 
     var templatePath = opts.template;
+
+    console.log(templatePath);
+    
     view = new template.Template(templatePath + '/tmpl');
     
     // claim some special filenames in advance, so the All-Powerful Overseer of Filename Uniqueness

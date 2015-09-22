@@ -3,6 +3,9 @@
 .main {
     padding: 20px 20px;
     margin-left: @navWidth;
+    transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-out;
+    transition
     .page-title {
         display: none;
     }
@@ -118,6 +121,7 @@
         margin-top: 10px;
         // .font-description();
         font-size: 13px;
+        line-height: 26px;
 
         ul, ol {
             margin-bottom: 15px;
@@ -296,7 +300,7 @@
 
     article {
         ol, ul {
-            margin-left: 45px;
+            margin-left: 25px;
         }
 
         ol > li {
@@ -309,4 +313,39 @@
             list-style-type: disc;
         }
     }
+
+    .prettyprint {
+        position: relative;
+        padding-top: 30px;
+
+        .linenums {
+            margin-left: 45px;
+        }
+
+        &:after {
+            content: 'Javascript';
+            top: 0;
+            left: 0;
+            position: absolute;
+            font-size: 14px;
+            background-color: #ccd;
+            color: #fff;
+            padding: 0 15px;
+            line-height: 20px;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            border-radius: 3px 0 0 0;
+            box-shadow: inset 0 0 1px #ccc;
+        }
+    }
+
+    pre {
+        &.pre-html:after {
+            content: 'HTML';
+        }
+        &.pre-javascript:after {
+            content: 'Javascript';
+        }
+    }
+
 }
